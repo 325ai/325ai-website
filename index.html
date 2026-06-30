@@ -19,7 +19,7 @@
   <meta name="twitter:image" content="https://325ai-website.sites.cwadagency.com/twitter-card.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Roboto:wght@300&amp;family=Didact+Gothic&amp;display=swap" rel="stylesheet">
   <style>
     /* ═══════════════════════════════════════════
        325 AI — V2 REDESIGN
@@ -28,7 +28,7 @@
        ═══════════════════════════════════════════ */
 
     :root {
-      --navy: #0d1634;
+      --navy: #09214c;
       --navy-light: #151d2e;
       --navy-mid: #1a2236;
       --white: #ffffff;
@@ -40,7 +40,7 @@
 
       --red: #f73c44;
       --red-bright: #ef4444;
-      --yellow: #fff000;
+      --yellow: #d5ff24;
       --purple: #8b58ed;
       --purple-deep: #6b1d6e;
       --magenta: #e91e8c;
@@ -111,7 +111,7 @@
       right: 0;
       z-index: 1000;
       padding: 16px 0;
-      background: rgba(13, 22, 52, 0.92);
+      background: rgba(9, 33, 76, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -145,7 +145,7 @@
     }
 
     .nav-links a {
-      font-family: "Roboto", sans-serif;
+      font-family: 'Didact Gothic', sans-serif;
       font-size: var(--text-xs);
       font-weight: 400;
       letter-spacing: 0.12em;
@@ -255,13 +255,13 @@
        ═══════════════════════════════════════════ */
 
     .hero {
-      min-height: calc(100vh - 225px);
+      min-height: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       position: relative;
-      padding: 50px 0 0;
-      overflow: hidden;
+      padding: 260px 0 0;
+      overflow-x: clip;
     }
 
     .hero-watermark {
@@ -292,6 +292,15 @@
       position: relative;
       max-width: min(40.7vw, 625px);
     }
+    .hero-decades-label {
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 0 0 8px 0;
+    }
 
     .hero-word {
       display: block;
@@ -306,15 +315,42 @@
       width: 100%;
       height: auto;
     }
-
-    .hero-word + .hero-word {
-      margin-top: -1.75%;
+    .hero-word-text {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(56px, 9vw, 155px);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      display: block;
+      white-space: nowrap;
     }
 
-    .hero-word:nth-child(1) { animation-delay: 0.2s; }
-    .hero-word:nth-child(2) { animation-delay: 0.35s; }
-    .hero-word:nth-child(3) { animation-delay: 0.5s; }
-    .hero-word:nth-child(4) { animation-delay: 0.65s; }
+    .hero-plus {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 0.72em;
+      line-height: 1;
+      display: inline-block;
+      margin-left: 0.05em;
+      position: relative;
+      top: -0.22em;
+    }
+    .hero-word + .hero-word {
+      margin-top: 0;
+    }
+    .hero-word:nth-child(2) {
+      margin-bottom: 0;
+    }
+    .hero-word:nth-child(4) {
+      margin-top: -10px;
+    }
+    .hero-word:nth-child(3) img { filter: brightness(0) saturate(100%) invert(22%) sepia(96%) saturate(2500%) hue-rotate(338deg) brightness(108%); }
+    .hero-word:nth-child(5) img { filter: hue-rotate(-96deg); }
+
+    .hero-word:nth-child(2) { animation-delay: 0.2s; }
+    .hero-word:nth-child(3) { animation-delay: 0.35s; }
+    .hero-word:nth-child(4) { animation-delay: 0.5s; }
+    .hero-word:nth-child(5) { animation-delay: 0.65s; }
 
     @keyframes heroWordReveal {
       0% {
@@ -336,7 +372,7 @@
 
     /* ── Sub-hero RED BAND ── */
     .hero-sub-band {
-      background: var(--red);
+      background: #7450FA;
       opacity: 0;
       animation: fadeIn 0.8s ease forwards 1.2s;
       margin-top: -6px;
@@ -485,6 +521,7 @@
       display: grid;
       grid-template-columns: clamp(60px, 8vw, 100px) 1fr;
       gap: 0;
+      align-items: center;
       border-top: 1px solid rgba(0,0,0,0.1);
       padding: clamp(24px, 3vw, 40px) 0;
       transition: all 0.3s ease;
@@ -527,13 +564,13 @@
     .service-info {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 40px;
     }
 
     .service-name {
-      font-family: var(--font-display);
-      font-size: var(--display-md);
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(30px, 3.5vw, 50px);
       text-transform: uppercase;
       line-height: 1;
       letter-spacing: -0.01em;
@@ -545,7 +582,7 @@
       font-family: var(--font-body);
       font-size: var(--text-sm);
       line-height: 1.7;
-      color: var(--gray-500);
+      color: #6B6B6B;
       max-width: 400px;
       padding-top: 8px;
     }
@@ -694,7 +731,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--magenta);
+      color: var(--cyan);
       margin-bottom: 12px;
     }
 
@@ -1326,9 +1363,7 @@
        ═══════════════════════════════════════════ */
 
     /* ── Headers → Playfair, all lowercase ── */
-    .service-name,
     .proof-title,
-    .closing-title,
     .feature-card h4,
     .mid-statement,
     .manifesto-text,
@@ -1339,6 +1374,17 @@
       text-transform: lowercase;
       letter-spacing: 0;
       font-weight: 700;
+    }
+    .closing-title {
+      font-family: 'Anton', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+    .service-name {
+      font-family: 'Anton', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      font-weight: 400;
     }
 
     /* ── Body copy: light weight (3pt larger handled by tokens) ── */
@@ -1370,8 +1416,18 @@
       line-height: 1.08;
       color: var(--white);
       padding-bottom: clamp(8px, 1vw, 24px);
+      text-align: center;
+      margin-left: -10px;
     }
     .hero-aligned .accent { color: var(--red); }
+    @keyframes first-glow {
+      0%, 100% { color: var(--yellow); text-shadow: 0 0 0px transparent; }
+      50% { color: #fffb80; text-shadow: 0 0 24px rgba(255,240,0,0.6); }
+    }
+    .first-pulse {
+      color: var(--yellow);
+      animation: first-glow 2.4s ease-in-out infinite;
+    }
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 24px; align-items: start; }
       .hero-aligned { font-size: clamp(24px, 6vw, 40px); }
@@ -1384,10 +1440,52 @@
       text-align: center;
     }
     .hero-sub-text {
-      max-width: 880px;
-      font-size: clamp(20px, 2.4vw, 30px);
-      line-height: 1.6;
+      max-width: 1200px;
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: clamp(28px, 2.8vw, 36px);
+      line-height: 1.4;
       padding-top: 0;
+    }
+
+    .statement-band {
+      background: var(--navy);
+      text-align: center;
+      padding: clamp(26px, 6vw, 66px) clamp(20px, 4vw, 60px) clamp(66px, 8vw, 106px);
+    }
+    .statement-band-inner { max-width: 1100px; margin: 0 auto; }
+    .statement-line1 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin: 0 0 0.1em;
+      text-transform: lowercase;
+    }
+    .statement-line2 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin: 0;
+      text-transform: lowercase;
+    }
+    .statement-highlight { color: var(--white); }
+
+    .hero-tagline-band {
+      background: var(--navy);
+      text-align: center;
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 60px);
+    }
+    .hero-tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 55px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1.2;
+      margin: 0;
     }
 
     /* ── "Still thinking / done by now": tight leading, letters touching ── */
@@ -1397,7 +1495,7 @@
     .mid-statement-big { line-height: 0.82; margin-top: clamp(14px, 1.6vw, 22px); }
 
     /* ── Services 01-05: larger body, 2-line content ── */
-    .service-desc { font-size: calc(var(--text-sm) + 2px); max-width: 460px; line-height: 1.6; }
+    .service-desc { font-family: 'Didact Gothic', sans-serif; font-size: calc(var(--text-sm) + 2px); max-width: 460px; line-height: 1.6; }
     .service-desc-lead { display: block; }
     .service-desc-more { display: block; margin-top: 10px; color: var(--gray-500); }
 
@@ -1479,16 +1577,16 @@
     /* ── WORK / portfolio showcase ── */
     .work { padding: var(--section-pad) 0; background: var(--navy); }
     .work-label {
-      font-family: var(--font-body);
+      font-family: 'Didact Gothic', sans-serif;
       font-size: var(--text-sm);
-      font-weight: 700;
+      font-weight: 400;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--cyan);
       margin-bottom: 12px;
     }
     .work-title {
-      font-size: var(--display-xl);
+      font-size: clamp(34px, 6vw, 102px);
       line-height: 0.95;
       margin-bottom: clamp(40px, 5vw, 72px);
     }
@@ -1500,8 +1598,8 @@
     .work-card {
       display: flex;
       flex-direction: column;
-      background: var(--navy-mid);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: transparent;
+      border: none;
       border-radius: 6px;
       overflow: hidden;
       transition: transform 0.3s ease, border-color 0.3s ease;
@@ -1521,7 +1619,7 @@
     }
     .work-thumb span { position: relative; z-index: 1; padding: 0 16px; text-align: center; }
     .work-thumb::after {
-      content: 'screenshot placeholder';
+      content: '';
       position: absolute;
       bottom: 12px;
       left: 0; right: 0;
@@ -1535,12 +1633,12 @@
     }
     .work-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
     .work-card-tag {
-      font-family: var(--font-body);
+      font-family: 'Didact Gothic', sans-serif;
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-weight: 400;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gray-500);
+      color: var(--cyan);
     }
     .work-card-name {
       font-family: var(--font-serif);
@@ -1550,21 +1648,25 @@
       line-height: 1.05;
       color: var(--white);
     }
-    .work-card-desc { font-size: var(--text-sm); line-height: 1.55; color: var(--gray-300); flex: 1; }
+    .work-card-desc { font-family: 'Didact Gothic', sans-serif; font-size: var(--text-sm); line-height: 1.55; color: var(--gray-300); flex: 1; }
     .work-card-link {
-      margin-top: 8px;
-      font-family: var(--font-body);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      text-transform: lowercase;
+      color: #fff;
+      background: transparent;
+      border: 1.5px solid #fff;
+      border-radius: 100px;
+      padding: 5px 12px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: gap 0.3s ease;
+      align-self: flex-end;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
     }
-    .work-card:hover .work-card-link { gap: 16px; }
+    .work-card:hover .work-card-link { border-color: rgba(255,255,255,0.6); color: rgba(255,255,255,0.6); }
     @media (max-width: 1024px) { .work-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr; } }
 
@@ -1576,7 +1678,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--purple);
+      color: var(--cyan);
       margin-bottom: 12px;
     }
     .team-title { font-size: var(--display-xl); line-height: 0.95; margin-bottom: clamp(40px, 5vw, 72px); }
@@ -1729,12 +1831,13 @@
     <div class="container hero-content">
       <div class="hero-grid">
         <div class="hero-stack">
-          <div class="hero-word"><img src="hero-strategy.png" alt="Strategy." width="3433" height="886"></div>
-          <div class="hero-word"><img src="hero-design.png" alt="Design." width="3433" height="886"></div>
-          <div class="hero-word"><img src="hero-build.png" alt="Build." width="3433" height="886"></div>
-          <div class="hero-word"><img src="hero-execute.png" alt="Execute." width="3433" height="886"></div>
+          <p class="hero-decades-label">Three Decades Of</p>
+          <div class="hero-word hero-word-text" style="color:var(--white)">Strategic</div>
+          <div class="hero-word hero-word-text" style="color:var(--red)">Design <span class="hero-plus">+</span></div>
+          <div class="hero-word hero-word-text" style="color:var(--yellow)">Advanced</div>
+          <div class="hero-word hero-word-text" style="color:#7450FA">Engineering</div>
         </div>
-        <p class="hero-aligned">aligned from the<br>first <span class="accent">conversation</span></p>
+        <p class="hero-aligned">aligned from the<br><span class="first-pulse">first</span> conversation</p>
       </div>
     </div>
   </section>
@@ -1742,50 +1845,50 @@
   <!-- ═══════════ RED BAND — centered read area ═══════════ -->
   <div class="hero-sub-band">
     <div class="hero-sub">
-      <p class="hero-sub-text">We don't just design pages. We build intelligent brand systems where design, performance, automation, and user experience work together seamlessly.</p>
+      <p class="hero-sub-text">We don't just design, we build intelligent brand systems.</p>
     </div><section class="work" id="work">
     <div class="container">
-      <p class="work-label reveal">Selected Work</p>
-      <h2 class="work-title reveal">AI Websites<br>We Built.</h2>
+      <p class="work-label reveal">Recent Work</p>
+      <h2 class="work-title reveal">See for Yourself.</h2>
 
       <div class="work-grid">
         <a class="work-card reveal" href="https://www.garmany.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#2b2b2b,#9c7b3f);"><span>garmany</span></div>
+          <div class="work-thumb" style="background-image:url('images/garmany.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Luxury Retail</span>
             <span class="work-card-name">garmany</span>
             <p class="work-card-desc">A refined storefront for a legacy luxury fashion house, built to match its in-store experience online.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://gourmandnj.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#7a1f12,#ff6b35);"><span>gourmand</span></div>
+          <div class="work-thumb" style="background-image:url('images/gourmand.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Food &amp; Hospitality</span>
             <span class="work-card-name">gourmand</span>
             <p class="work-card-desc">A warm, appetite-first site for a specialty food brand, with a conversational ordering assistant built in.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://tribecapet.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#0f5c52,#39e75f);"><span>tribeca pet</span></div>
+          <div class="work-thumb" style="background-image:url('images/tribeca-pet.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Pet Care</span>
             <span class="work-card-name">tribeca pet</span>
             <p class="work-card-desc">A friendly, fast-booking site for a neighborhood pet care brand with a 24/7 AI front desk.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://www.aylapilatesroma.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#6b1d6e,#e91e8c);"><span>ayla pilates</span></div>
+          <div class="work-thumb" style="background-image:url('images/ayla-pilates.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Fitness &amp; Wellness</span>
             <span class="work-card-name">ayla pilates</span>
             <p class="work-card-desc">A calm, premium studio site that turns visitors into booked sessions with minimal friction.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
@@ -1795,37 +1898,37 @@
             <span class="work-card-tag">Coaching &amp; Performance</span>
             <span class="work-card-name">velocity</span>
             <p class="work-card-desc">A high-energy performance-coaching site engineered for lead capture and fast conversion.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://www.invisioneyecare.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#3a1d6e,#8b58ed);"><span>invision</span></div>
+          <div class="work-thumb" style="background-image:url('images/invision.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Email / Newsletter</span>
             <span class="work-card-name">invision</span>
             <p class="work-card-desc">A branded email and newsletter system that keeps patients engaged between visits.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://hyntbeauty.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#1a2236,#4fc3f7);"><span>hynt</span></div>
+          <div class="work-thumb" style="background-image:url('images/hynt.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Beauty &amp; Skincare</span>
             <span class="work-card-name">hynt</span>
             <p class="work-card-desc">A clean, conversion-focused beauty brand experience with an AI product guide.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
         <a class="work-card reveal" href="https://kiwabi.com" target="_blank" rel="noopener">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#0f5c52,#39e75f);"><span>kiwabi</span></div>
+          <div class="work-thumb" style="background-image:url('images/kiwabi.png');background-size:cover;background-position:center;"></div>
           <div class="work-body">
             <span class="work-card-tag">Brand &amp; Product</span>
             <span class="work-card-name">kiwabi</span>
             <p class="work-card-desc">A distinctive brand site built fast, with room to scale as the product line grows.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
 
@@ -1835,7 +1938,7 @@
             <span class="work-card-tag">Local Service</span>
             <span class="work-card-name">fluff &amp; fold</span>
             <p class="work-card-desc">A local laundromat site with pickup booking and a 24/7 assistant handling routine questions.</p>
-            <span class="work-card-link">View site →</span>
+            <span class="work-card-link">view site</span>
           </div>
         </a>
       </div>
@@ -1843,39 +1946,7 @@
   </section>
   </div>
 
-  <!-- ═══════════ VIDEO — fast-moving hero motion ═══════════
-       TODO (Ernesto): drop in a fast-moving brand video.
-       Replace .video-placeholder with:
-       <video autoplay muted loop playsinline poster="..." style="width:100%;border-radius:4px;">
-         <source src="hero-loop.mp4" type="video/mp4"></video> -->
-  <section class="video-section">
-    <div class="container">
-      <div class="video-placeholder">
-        <span class="play"></span>
-        <span class="video-label">Brand motion — video coming soon</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ MID SPLIT — Statement + 30 Years ═══════════ -->
-  <section class="mid-split">
-    <div class="mid-split-left">
-      <div class="mid-bullet">
-        <span class="mid-bullet-dot"></span>
-        <span class="mid-bullet-line"></span>
-      </div>
-      <div class="mid-statement">
-        <span class="mid-statement-line1">Still thinking?</span>
-        <span class="mid-statement-line2">We're building.</span>
-      </div>
-      <div class="mid-statement">
-        <span class="mid-statement-big">We could've been<br><span class="highlight">done by now!</span></span>
-      </div>
-    </div>
-    <div class="mid-split-right">
-      <img class="mid-30years-img" src="325-30years-text.png" alt="30 Years of Branding Design and Engineering">
-    </div>
-  </section>
+  <section class="statement-band"><div class="statement-band-inner"><p class="statement-line1"><span style="color:var(--red)">Still thinking?</span> <span style="color:var(--yellow)">We're building.</span></p><p class="statement-line2">We could've been <span class="statement-highlight">done by now!</span></p></div></section>
 
   <!-- ═══════════ SERVICES ═══════════ -->
   <section class="services" id="services">
@@ -1888,8 +1959,8 @@
         <div class="service-info">
           <h3 class="service-name">Brand Strategy</h3>
           <p class="service-desc">
-            <span class="service-desc-lead">Positioning. Voice. Identity. <strong>Human-led. Never automated.</strong></span>
-            <span class="service-desc-more">We define the foundation that makes your brand clear, credible, and impossible to ignore.</span>
+            <span class="service-desc-lead"><strong>Positioning. Voice. Identity.<br>Human-led. Never automated.</strong></span>
+            <span class="service-desc-more">We already know what you need. After nearly three decades of building brands, we know how to read the market, understand your audience, and define the strategy that makes your brand impossible to ignore.</span>
           </p>
         </div>
       </div>
@@ -1899,8 +1970,8 @@
         <div class="service-info">
           <h3 class="service-name">Intelligent Websites</h3>
           <p class="service-desc">
-            <span class="service-desc-lead">Beautiful design. Clean, scalable code. <strong>Built-in SEO from day one.</strong> Launched in days, not months.</span>
-            <span class="service-desc-more">Built to look refined, load fast, communicate clearly, and support growth from the first click.</span>
+            <span class="service-desc-lead"><strong>Beautiful design. Clean, scalable code.<br>Built-in SEO. Launched in days, not months.</strong></span>
+            <span class="service-desc-more">We build websites with purpose, presence, and performance. Designed to elevate your brand, guide your audience, and turn attention into action.</span>
           </p>
         </div>
       </div>
@@ -1910,8 +1981,8 @@
         <div class="service-info">
           <h3 class="service-name">AI Integration</h3>
           <p class="service-desc">
-            <span class="service-desc-lead"><strong>Embedded. Not bolted on.</strong> AI agents that answer questions, capture leads, and guide users 24/7. Multilingual. Adaptive. Always learning.</span>
-            <span class="service-desc-more">Designed to work seamlessly inside your brand experience, not sit on top of it.</span>
+            <span class="service-desc-lead"><strong>Intelligent agents. Real-time answers. Lead capture. Multilingual support. 24/7 guidance.</strong></span>
+            <span class="service-desc-more">We turn AI into a seamless extension of your brand. Ready to answer, guide, qualify, and connect with your audience in any language, at any time.</span>
           </p>
         </div>
       </div>
@@ -1921,22 +1992,12 @@
         <div class="service-info">
           <h3 class="service-name">Speed &amp; Efficiency</h3>
           <p class="service-desc">
-            <span class="service-desc-lead">No bloated timelines. No inflated retainers. <strong>No layered agency drag.</strong> Direct collaboration. Real-time execution.</span>
-            <span class="service-desc-more">A focused process that moves fast without sacrificing strategy, design, or detail.</span>
+            <span class="service-desc-lead"><strong>No bloated timelines or inflated retainers.<br>Direct collaboration. Real-time execution.</strong></span>
+            <span class="service-desc-more">We move with focus, instinct, and precision. Providing senior-level thinking without the slow agency drag.</span>
           </p>
         </div>
       </div>
 
-      <div class="service-row reveal">
-        <span class="service-num">05</span>
-        <div class="service-info">
-          <h3 class="service-name">Brand Guidelines</h3>
-          <p class="service-desc">
-            <span class="service-desc-lead"><strong>Structure protects perception.</strong> Mini Brand Framework or full system — so your identity scales consistently across every touchpoint.</span>
-            <span class="service-desc-more">Clear rules give your team, vendors, and AI-driven tools the direction to keep your brand aligned.</span>
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1969,7 +2030,7 @@
       <div class="proof-body reveal">
         <div class="proof-copy">
           <p>Because we integrate AI directly into our development workflow, we eliminate unnecessary layers, delays, and inflated timelines.</p>
-          <p><strong>Websites that once took months can now be designed, developed, and launched in days — sometimes hours</strong> — without compromising quality, clarity, or brand integrity.</p>
+          <p><strong>Websites that once took months can now be designed, developed, and launched in days, sometimes hours,</strong> without compromising quality, clarity, or brand integrity.</p>
         </div>
         <div class="proof-copy">
           <p>This is not about cutting corners. It's about removing friction. Every tool, every process, every handoff is engineered for velocity.</p>
@@ -1996,7 +2057,7 @@
       <p class="manifesto-text reveal">
         Strategy and code.<br>
         Design and infrastructure.<br>
-        Vision and execution —<br>
+        Vision and execution,<br>
         aligned from the first conversation.
       </p>
     </div>
@@ -2031,7 +2092,7 @@
         <div class="feature-card reveal">
           <span class="feature-card-icon">◈</span>
           <h4>Built-In SEO</h4>
-          <p>Search-optimized structure from day one — not bolted on as an afterthought.</p>
+          <p>Search-optimized structure from day one, not bolted on as an afterthought.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-card-icon">{ }</span>
@@ -2102,8 +2163,7 @@
       <div class="closing-content">
         <p class="closing-pre reveal">not just a website</p>
         <h2 class="closing-title reveal"><span class="a">a</span> system.</h2>
-        <p class="closing-sub reveal">We don't just design pages. We build intelligent brand systems where design, performance, automation, and user experience work together seamlessly.</p>
-        <p class="closing-statement reveal">Three decades of brand mastery meets advanced engineering precision.</p>
+        <p class="closing-sub reveal">We don't just design pages. We build intelligent brand systems<br>where design, performance, automation, and user experience work together seamlessly.</p>
 
         <!-- Let's Build contact form -->
         <!-- TODO (Ernesto): set form action to your endpoint (Formspree/UCP) and the calendar link to your real booking URL. -->
